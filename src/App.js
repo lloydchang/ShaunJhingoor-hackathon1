@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
 
 function App() {
+  const id = "1724517066104-2099"
+  useEffect(() => {
+    // Fetch data from the API Gateway endpoint
+    fetch(`https://jo589y2zh7.execute-api.us-east-1.amazonaws.com/test/transcriptions/${id}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Fetched data:', data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Check the console for fetched transcriptions</h1>
     </div>
   );
 }
